@@ -1,0 +1,118 @@
+import SwiftUI
+
+enum LFSampleScenes {
+    static let all: [LFScene] = [
+        LFScene(
+            id: UUID(uuidString: "1B1CFE11-61F6-46A0-81A0-CFE1D14DBE31") ?? UUID(),
+            title: "After Rain Facade",
+            subtitle: "Quiet gradients with layered typography",
+            category: "Architecture",
+            dominantTone: "Slate",
+            backgroundStyle: .quiet,
+            accentColor: LFPalette.mutedCyan,
+            hasMotion: false,
+            isFavorite: true,
+            readingTime: "4 min",
+            layoutStyle: .hero,
+            bodyCopy: "A calm visual profile used to validate that controls stay subtle when content complexity is low."
+        ),
+        LFScene(
+            id: UUID(uuidString: "7C0F2196-E4FE-4DE3-B946-7A6EE2F3A2AA") ?? UUID(),
+            title: "Noon Terraces",
+            subtitle: "High luminance with restrained contrast",
+            category: "Travel",
+            dominantTone: "Sand",
+            backgroundStyle: .bright,
+            accentColor: LFPalette.mutedAmber,
+            hasMotion: false,
+            isFavorite: false,
+            readingTime: "3 min",
+            layoutStyle: .compact,
+            bodyCopy: "Bright backgrounds test whether controls remain legible without over-tinting or over-thick glass."
+        ),
+        LFScene(
+            id: UUID(uuidString: "9FF3B7AA-5EB5-458E-B864-1784F77B6B15") ?? UUID(),
+            title: "Midnight Corridor",
+            subtitle: "Low luminance, strong depth cues",
+            category: "Editorial",
+            dominantTone: "Charcoal",
+            backgroundStyle: .dark,
+            accentColor: LFPalette.coolFocus,
+            hasMotion: false,
+            isFavorite: false,
+            readingTime: "5 min",
+            layoutStyle: .split,
+            bodyCopy: "Dark scenes help evaluate hierarchy and icon clarity where shadows and contrast dominate."
+        ),
+        LFScene(
+            id: UUID(uuidString: "EED55A63-CC56-4D01-9428-5E5A421D5A26") ?? UUID(),
+            title: "Signal Market",
+            subtitle: "Dense hue without noise collapse",
+            category: "Culture",
+            dominantTone: "Rose",
+            backgroundStyle: .saturated,
+            accentColor: LFPalette.mutedRose,
+            hasMotion: false,
+            isFavorite: false,
+            readingTime: "6 min",
+            layoutStyle: .hero,
+            bodyCopy: "Saturated layers expose when a glass treatment starts fighting with content hierarchy."
+        ),
+        LFScene(
+            id: UUID(uuidString: "E343EFE3-8FA4-4BDC-B03E-B554111AA03A") ?? UUID(),
+            title: "Transit Grid",
+            subtitle: "High-frequency geometry and texture",
+            category: "City",
+            dominantTone: "Steel",
+            backgroundStyle: .busy,
+            accentColor: LFPalette.mutedCyan,
+            hasMotion: false,
+            isFavorite: true,
+            readingTime: "2 min",
+            layoutStyle: .compact,
+            bodyCopy: "Busy backgrounds are adversarial: they reveal weak separation in custom controls quickly."
+        ),
+        LFScene(
+            id: UUID(uuidString: "29E6DEB8-C3FC-4B22-9C43-CA890B95B90E") ?? UUID(),
+            title: "Tide Observatory",
+            subtitle: "Subtle movement behind persistent controls",
+            category: "Science",
+            dominantTone: "Teal",
+            backgroundStyle: .moving,
+            accentColor: LFPalette.coolFocus,
+            hasMotion: true,
+            isFavorite: false,
+            readingTime: "7 min",
+            layoutStyle: .motion,
+            bodyCopy: "Motion-heavy content evaluates whether animation scope stays constrained around key UI."
+        ),
+        LFScene(
+            id: UUID(uuidString: "729F659A-6A4B-4A71-A5E8-D5D0BE7E58DE") ?? UUID(),
+            title: "Studio Notes",
+            subtitle: "Mixed contrast editorial composition",
+            category: "Design",
+            dominantTone: "Neutral",
+            backgroundStyle: .mixedLight,
+            accentColor: LFPalette.mutedAmber,
+            hasMotion: true,
+            isFavorite: false,
+            readingTime: "4 min",
+            layoutStyle: .split,
+            bodyCopy: "Mixed-light scenes bridge bright and dark zones to stress context-aware control prominence."
+        ),
+        LFScene(
+            id: UUID(uuidString: "ED1A851C-A483-4B82-9A85-6B336D7266C5") ?? UUID(),
+            title: "Archive Shelf",
+            subtitle: "Balanced neutral baseline",
+            category: "Library",
+            dominantTone: "Graphite",
+            backgroundStyle: .editorialNeutral,
+            accentColor: LFPalette.mutedRose,
+            hasMotion: false,
+            isFavorite: true,
+            readingTime: "3 min",
+            layoutStyle: .compact,
+            bodyCopy: "Neutral scenes act as baseline references for comparing other stress conditions."
+        )
+    ]
+}
