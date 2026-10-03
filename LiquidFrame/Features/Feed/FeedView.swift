@@ -193,7 +193,8 @@ private struct SceneCardView: View {
             VStack(alignment: .leading, spacing: 8) {
                 Text(scene.category.uppercased())
                     .font(.caption2.weight(.semibold))
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(LFPalette.softIvory.opacity(isFocusModeEnabled ? 0.74 : 0.9))
+                    .shadow(color: .black.opacity(0.5), radius: 4, y: 2)
 
                 Text(scene.title)
                     .font(titleFont)

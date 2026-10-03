@@ -11,18 +11,27 @@ struct DetailView: View {
                 RoundedRectangle(cornerRadius: 24, style: .continuous)
                     .fill(scene.accentColor.opacity(0.25))
                     .overlay(alignment: .bottomLeading) {
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text(scene.category.uppercased())
-                                .font(.caption.weight(.semibold))
-                                .foregroundStyle(.secondary)
-                            Text(scene.title)
-                                .font(.largeTitle.bold())
-                                .foregroundStyle(LFPalette.softIvory)
-                            Text(scene.subtitle)
-                                .font(.headline)
-                                .foregroundStyle(LFPalette.softIvory.opacity(0.9))
+                        ZStack(alignment: .bottomLeading) {
+                            LinearGradient(
+                                colors: [Color.clear, Color.black.opacity(0.66)],
+                                startPoint: .top,
+                                endPoint: .bottom
+                            )
+
+                            VStack(alignment: .leading, spacing: 8) {
+                                Text(scene.category.uppercased())
+                                    .font(.caption.weight(.semibold))
+                                    .foregroundStyle(LFPalette.softIvory.opacity(0.95))
+                                Text(scene.title)
+                                    .font(.largeTitle.bold())
+                                    .foregroundStyle(LFPalette.softIvory)
+                                    .shadow(color: .black.opacity(0.65), radius: 8, y: 3)
+                                Text(scene.subtitle)
+                                    .font(.headline)
+                                    .foregroundStyle(LFPalette.softIvory.opacity(0.95))
+                            }
+                            .padding(20)
                         }
-                        .padding(20)
                     }
                     .frame(height: 300)
                     .background {
