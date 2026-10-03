@@ -101,6 +101,20 @@ enum LFSampleScenes {
             bodyCopy: "Mixed-light scenes bridge bright and dark zones to stress context-aware control prominence."
         ),
         LFScene(
+            id: UUID(uuidString: "A5D39C25-95AE-40C8-B756-6F8EE1534A11") ?? UUID(),
+            title: "Monochrome Drift",
+            subtitle: "Black and white high-contrast study",
+            category: "Photography",
+            dominantTone: "Monochrome",
+            backgroundStyle: .monoMotion,
+            accentColor: Color.white,
+            hasMotion: false,
+            isFavorite: false,
+            readingTime: "5 min",
+            layoutStyle: .motion,
+            bodyCopy: "A monochrome animated stage used to verify control clarity over high-contrast moving backgrounds."
+        ),
+        LFScene(
             id: UUID(uuidString: "ED1A851C-A483-4B82-9A85-6B336D7266C5") ?? UUID(),
             title: "Archive Shelf",
             subtitle: "Balanced neutral baseline",

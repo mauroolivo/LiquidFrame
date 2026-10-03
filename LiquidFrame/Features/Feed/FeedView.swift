@@ -273,8 +273,10 @@ struct SceneBackgroundView: View {
             detailLayer
 
             if allowsMotion && !reduceMotion && !isFocusModeEnabled {
-                MovingGlowOverlay(animate: animate, accent: accent)
-                    .transition(.opacity)
+                if condition != .monoMotion {
+                    MovingGlowOverlay(animate: animate, accent: accent)
+                        .transition(.opacity)
+                }
             }
         }
         .saturation(isFocusModeEnabled ? 0.72 : 1.0)
@@ -300,6 +302,12 @@ struct SceneBackgroundView: View {
             return LinearGradient(colors: [LFPalette.charcoal, accent.opacity(0.6), LFPalette.deepGraphite], startPoint: .topLeading, endPoint: .bottomTrailing)
         case .moving:
             return LinearGradient(colors: [LFPalette.deepGraphite, accent.opacity(0.7), LFPalette.charcoal], startPoint: .top, endPoint: .bottom)
+        case .monoMotion:
+            return LinearGradient(
+                colors: [Color.black, Color.white, Color.black],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
         case .mixedLight:
             return LinearGradient(colors: [Color.white.opacity(0.7), LFPalette.charcoal, accent.opacity(0.35)], startPoint: .topLeading, endPoint: .bottomTrailing)
         case .editorialNeutral:
@@ -323,6 +331,16 @@ struct SceneBackgroundView: View {
                 .blur(radius: 20)
                 .offset(x: animate ? 25 : -25)
                 .animation(.easeInOut(duration: 4).repeatForever(autoreverses: true), value: animate)
+        case .monoMotion:
+            Rectangle()
+                .fill(
+                    LinearGradient(
+                        colors: [.white, .white, .black, .black],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
+                .blendMode(.overlay)
         default:
             EmptyView()
         }

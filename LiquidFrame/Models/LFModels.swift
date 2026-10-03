@@ -7,6 +7,7 @@ enum LFBackgroundCondition: String, CaseIterable, Identifiable, Codable {
     case saturated
     case busy
     case moving
+    case monoMotion = "mono-motion"
     case mixedLight = "mixed-light"
     case editorialNeutral = "editorial-neutral"
 
@@ -20,6 +21,7 @@ enum LFBackgroundCondition: String, CaseIterable, Identifiable, Codable {
         case .saturated: return "Saturated"
         case .busy: return "Busy"
         case .moving: return "Moving"
+        case .monoMotion: return "Monochrome"
         case .mixedLight: return "Mixed Light"
         case .editorialNeutral: return "Editorial Neutral"
         }
