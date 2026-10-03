@@ -3,6 +3,7 @@ import Observation
 
 struct FeedView: View {
     @Bindable var viewModel: FeedViewModel
+    let transitionNamespace: Namespace.ID
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
@@ -21,7 +22,8 @@ struct FeedView: View {
                             DetailView(
                                 scene: scene,
                                 condition: viewModel.effectiveBackground(for: scene),
-                                isFocusModeEnabled: viewModel.isFocusModeEnabled
+                                isFocusModeEnabled: viewModel.isFocusModeEnabled,
+                                transitionNamespace: transitionNamespace
                             )
                         } label: {
                             SceneCardView(
@@ -29,7 +31,8 @@ struct FeedView: View {
                                 condition: viewModel.effectiveBackground(for: scene),
                                 isFocusModeEnabled: viewModel.isFocusModeEnabled,
                                 reduceMotion: reduceMotion,
-                                dynamicTypeSize: dynamicTypeSize
+                                dynamicTypeSize: dynamicTypeSize,
+                                transitionNamespace: transitionNamespace
                             )
                         }
                         .buttonStyle(.plain)
@@ -179,6 +182,7 @@ private struct SceneCardView: View {
     let isFocusModeEnabled: Bool
     let reduceMotion: Bool
     let dynamicTypeSize: DynamicTypeSize
+    let transitionNamespace: Namespace.ID
 
     var body: some View {
         ZStack(alignment: .bottomLeading) {
@@ -220,6 +224,7 @@ private struct SceneCardView: View {
         }
         .frame(height: cardHeight)
         .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .matchedTransitionSource(id: scene.id, in: transitionNamespace)
         .overlay {
             RoundedRectangle(cornerRadius: 24, style: .continuous)
                 .strokeBorder(.white.opacity(0.12), lineWidth: 1)
@@ -379,17 +384,24 @@ private struct MovingGlowOverlay: View {
 }
 
 #Preview("Feed - Dark") {
-    NavigationStack {
-        FeedView(viewModel: FeedViewModel())
-    }
-    .preferredColorScheme(.dark)
+    FeedPreviewHost(isFocusModeEnabled: false)
+        .preferredColorScheme(.dark)
 }
 
 #Preview("Feed - Focus") {
-    NavigationStack {
-        let vm = FeedViewModel()
-        vm.isFocusModeEnabled = true
-        return FeedView(viewModel: vm)
+    FeedPreviewHost(isFocusModeEnabled: true)
+        .preferredColorScheme(.dark)
+}
+
+private struct FeedPreviewHost: View {
+    @Namespace private var transitionNamespace
+    let isFocusModeEnabled: Bool
+
+    var body: some View {
+        NavigationStack {
+            let vm = FeedViewModel()
+            vm.isFocusModeEnabled = isFocusModeEnabled
+            return FeedView(viewModel: vm, transitionNamespace: transitionNamespace)
+        }
     }
-    .preferredColorScheme(.dark)
 }
